@@ -43,7 +43,7 @@ app.use(todoRoutes);
 // 06_3 Колбек будет вызван в том случае, если сервер уже запущен
 async function start() {
     try {  
-        await mongoose.connect('mongodb+srv://anka:1z2x3c4v@cluster0.bpwya.mongodb.net/todos', {
+        await mongoose.connect('mongodb+srv://anka:1z2x3c4v@cluster0.flhux.mongodb.net/todos', {
             useNewUrlParser: true, // useFindAndModify: false
         }) 
         app.listen(PORT, () => {
