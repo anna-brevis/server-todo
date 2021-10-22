@@ -1,5 +1,5 @@
 // 00_Подключаем router из библиотеки экспресс
-// 04_Подключаем модельки
+// 00_1_Подключаем модельки
 const {Router} = require('express')
 const Todo = require ('../models/Todo')
 const router = Router()
@@ -24,6 +24,16 @@ router.get('/create', (req, res) => {
         title: 'Create todo',
         isCreate: true
     })
+})
+
+// 05_Строим модельки. Для того чтобы экспресс мог парсить body нам необходимо дописать логику в index.js. Чтобы сохранялись данные прописываем todo.save.
+router.post('/create', async (req, res) => {
+    const todo = new Todo ({
+        title: req.body.title
+    })
+
+    await todo.save()
+    res.redirect('/')
 })
 
 // 01_Экспортируем этот роутер наружу из файла

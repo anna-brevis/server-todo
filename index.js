@@ -34,6 +34,9 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
+//13_Для парсинга body
+app.use(express.urlencoded({extended: true}))
+
 // 12_Регистрируем роутер/ После этого в папке views создаём новую папку layouts, а в ней файл main.hbs.
 app.use(todoRoutes)
 
