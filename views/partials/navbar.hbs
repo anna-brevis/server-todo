@@ -1,0 +1,22 @@
+{{! В сайте Materialize ввести в поиск navbar и скопировать первый пример кода. В nav добавляем class. Ссылку мегняем на '/'. После изменений в списке прикрепяем данный паршел в основной лайаут (main.hbs).}}
+{{! Испоользуя флаги из роутера добавляем if isIndex и  дописываем классы, прописываем else. Тоже самое для других страниц. Далее создаём сами todos. Для этого в корне создаём папку models, в ней файл Todo.js}}
+<nav class="blue darken-4">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Todos</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        {{#if isIndex}}
+        <li class="active"><a href="/">Todos</a></li>
+        {{else}}
+        <li><a href="/">Todos</a></li>
+        {{/if}}
+
+        {{#if isCreate}}
+        <li class="active"><a href="/create">Create</a></li>
+        {{else}}
+        <li><a href="/create">Create</a></li>
+        {{/if}}
+
+      </ul>
+    </div>
+</nav>
