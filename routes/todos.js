@@ -32,7 +32,7 @@ router.post('/create', async (req, res) => {
         title: req.body.title
     })
 
-    await todo.save()
+    await todo.save();
     res.redirect('/')
 })
 
