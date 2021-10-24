@@ -4,6 +4,9 @@ const express = require('express')
 // 05_Подключаем базу mongodb
 const mongoose = require('mongoose')
 
+// 15_Для корректного отображения пути стилей
+const path = require('path')
+
 // 07_Подключаем handlebars
 const exphbs = require('express-handlebars')
 
@@ -34,8 +37,11 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
-//13_Для парсинга body
+// 13_Для парсинга body
 app.use(express.urlencoded({extended: true}))
+
+// 14_Для подключения стилей
+app.use(express.static(path.join(__dirname, 'public')))
 
 // 12_Регистрируем роутер/ После этого в папке views создаём новую папку layouts, а в ней файл main.hbs.
 app.use(todoRoutes)
@@ -47,7 +53,7 @@ app.use(todoRoutes)
 async function start() {
     try {  
         await mongoose.connect('mongodb+srv://anka:1z2x3c4v@cluster0.flhux.mongodb.net/todos', {
-            useNewUrlParser: true, // useFindAndModify: false
+            useNewUrlParser: true // useFindAndModify: false
         }) 
         app.listen(PORT, () => {
             console.log('Server has been sterted...')
@@ -58,4 +64,3 @@ async function start() {
 }
 // Чтобы заработало, выводим старт
 start()
-

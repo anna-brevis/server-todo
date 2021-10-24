@@ -2,20 +2,26 @@
 
 {{#if todos.length}}
 {{! Итерируем }}
+{{! Чтобы созданные тудушки сохраняли свои изменения (зачёркнутость, выбор галачкой) нужно обернуть тег li в form. Далее вид id. Подключаем в роутере.}}
+{{! Вносим изменения в input "checkbox" }}
 <ul>
     {{#each todos}}
         <li class="todo">
-            <label>
-                {{#if completed}}
-                    <input type="checkbox" checked> 
-                    <span class="completed">{{title}}</span>
-                {{else}}
-                    <input type="checkbox"> 
-                    <span>{{title}}</span>
-                {{/if}}
+            <form action="/complete" method="POST">
+                <label>
+                    {{#if completed}}
+                        <input type="checkbox" checked name="completed"> 
+                        <span class="completed">{{title}}</span>
+                    {{else}}
+                        <input type="checkbox" name="completed"> 
+                        <span>{{title}}</span>
+                    {{/if}}
 
-               <button class="btn btn-small">Save</button>
-            </label>
+                    <input type="hidden" value="{{_id}}" name="id">
+
+                <button class="btn btn-small" type="submit">Save</button>
+                </label>
+            </form>
         </li>
     {{/each}}
 </ul>
